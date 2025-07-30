@@ -1,4 +1,4 @@
-module 'Spark' 'cat;Input'
+module 'Spark_iScreen' 'cat;Input'
 author 'FABLAB BH credits Turgut for the OLED Graphics'
 version 1 1 
 depends /Spark_Digital /Spark_Analog /Spark_MP /Spark_PWM /Spark_I2C
