@@ -1,0 +1,52 @@
+module Spark_I2C 'cat;Output'
+author FABLAB
+version 1 1 
+depends '_Gesture (PAJ7620)' 
+choices direction clockwise 'counter-clockwise' 
+description ''
+variables Gesture 
+
+  spec 'r' 'Gesture Read' 'Gesture Read'
+  space
+  spec ' ' 'Motor Driver A' 'Motor Driver A Direction _ Speed _' 'menu.direction num' 'clockwise' 10
+  spec ' ' 'Motor Driver B' 'Motor Driver B Direction _ Speed _' 'menu.direction num' 'clockwise' 10
+  spec 'r' '_Direction' '_Motor Direction _' 'menu.direction' '10'
+
+to Direction Direction {
+  if (Direction == ('[data:toString]' 'counter-clockwise')) {
+    return (booleanConstant false)
+  } else {
+    return (booleanConstant true)
+  }
+}
+
+to 'Gesture Read' {
+  return ('paj7620 read')
+}
+
+to 'Motor Driver A' Direction Speed {
+  if ((Direction Direction) == (booleanConstant true)) {
+    i2cSet 0 1 Speed
+    i2cSet 0 2 0
+  } ((Direction Direction) == (booleanConstant false)) {
+    i2cSet 0 1 0
+    i2cSet 0 2 Speed
+  } else {
+    i2cSet 0 1 0
+    i2cSet 0 2 0
+  }
+}
+
+to 'Motor Driver B' Direction Speed {
+  if ((Direction Direction) == (booleanConstant true)) {
+    i2cSet 0 3 Speed
+    i2cSet 0 4 0
+  } ((Direction Direction) == (booleanConstant false)) {
+    i2cSet 0 3 0
+    i2cSet 0 4 Speed
+  } else {
+    i2cSet 0 3 0
+    i2cSet 0 4 0
+  }
+}
+

@@ -1,0 +1,66 @@
+module Spark_MP 'cat;Variables'
+author FABLAB
+version 1 1 
+choices MP_pins '1' '9' 
+description ''
+
+  spec 'r' 'Ultrasonic Pin' 'Ultrasonic Pin _' 'menu.MP_pins' 1
+  spec 'r' '_Multipins' 'Multipins _' 'menu.MP_pins' '1'
+  space
+  spec ' ' 'RGBLED3 Pin' 'RGBLED Pin _ R _ G _ B _' 'menu.MP_pins bool bool bool' 1 true true true
+  spec ' ' 'Traffic Light' 'Traffic Light Pin _ R _ Y _ G _' 'menu.MP_pins bool bool bool' 1 true true true
+  space
+  spec ' ' 'RGBLED3' 'RGBLED Pin _ R _ G _ B _' 'menu.MP_pins num num num' 1 50 50 50
+  spec ' ' 'Traffic Light Pin' 'Traffic Light Pin _ R _ Y _ G _' 'menu.MP_pins num num num' 1 255 255 255
+
+to Multipins Pin {
+  return (at Pin ('[data:makeList]' 12 0 0 0 0 0 0 0 17))
+}
+
+to RGBLED3 Pin Red Green Blue {
+  analogWriteOp (Multipins Pin) Red
+  analogWriteOp ((Multipins Pin) + 1) Green
+  analogWriteOp ((Multipins Pin) + 2) Blue
+}
+
+to 'RGBLED3 Pin' Pin Red Green Blue {
+  digitalWriteOp (Multipins Pin) Red
+  digitalWriteOp ((Multipins Pin) + 1) Green
+  digitalWriteOp ((Multipins Pin) + 2) Blue
+}
+
+to 'Traffic Light' Pin Red Yellow Green {
+  digitalWriteOp (Multipins Pin) Red
+  digitalWriteOp ((Multipins Pin) + 1) Yellow
+  digitalWriteOp ((Multipins Pin) + 2) Green
+}
+
+to 'Traffic Light Pin' Pin Red Yellow Green {
+  analogWriteOp (Multipins Pin) Red
+  analogWriteOp ((Multipins Pin) + 1) Yellow
+  analogWriteOp ((Multipins Pin) + 2) Green
+}
+
+to 'Ultrasonic Pin' Pin {
+  comment 'Contributed by Joan Guillén and Josep Ferràndiz'
+  digitalWriteOp ((Multipins Pin) + 1) false
+  waitMicros 2
+  digitalWriteOp ((Multipins Pin) + 1) true
+  waitMicros 50
+  digitalWriteOp ((Multipins Pin) + 1) false
+  local 'start' (microsOp)
+  waitUntil (or (not (digitalReadOp ((Multipins Pin) + 2))) (((microsOp) - start) > 23320))
+  waitUntil (or (digitalReadOp ((Multipins Pin) + 2)) (((microsOp) - start) > 23320))
+  if (((microsOp) - start) > 23320) {
+    comment 'Distance sensor not ready; return the last distance reading'
+    return _sr04_last
+  }
+  comment 'Pulse sent. Measure time until echo is detected.'
+  start = (microsOp)
+  waitUntil (or (not (digitalReadOp ((Multipins Pin) + 2))) (((microsOp) - start) > 23320))
+  _sr04_last = ((10 * ((microsOp) - start)) / 583)
+  comment 'Leave some time for reverberations to die away.'
+  waitMillis 10
+  return _sr04_last
+}
+

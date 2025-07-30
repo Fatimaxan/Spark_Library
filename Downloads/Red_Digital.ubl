@@ -1,0 +1,84 @@
+module Spark_Digital Data
+author 'FABLAB BH'
+version 1 1 
+depends '_Temperature Humidity (DHT11, DHT22)' 
+choices digital_pins '1' '2' '3' '4' '6' '7' '8' '9' 
+description ''
+  spec 'r' '_DigitalPins' '_DigitalPins _' 'menu.digital_pins' 1
+  spec 'r' 'Button Pin' 'Button Pin _' 'menu.digital_pins' 1
+  spec 'r' 'Hall Magnetic Pin' 'Hall Magnetic Pin _' 'menu.digital_pins' 1
+  spec 'r' 'Photo Interrupter Pin' 'Photo Interrupter Pin _' 'menu.digital_pins' 1
+  spec 'r' 'Tilt Switch Pin' 'Tilt Switch Pin _' 'menu.digital_pins' 1
+  spec 'r' 'Touch Pin' 'Touch Pin _' 'menu.digital_pins' 1
+  spec 'r' 'Humidity Pin' 'Humidity Pin _' 'menu.digital_pins' 1
+  spec 'r' 'Temperature Pin' 'Temperature Pin _' 'menu.digital_pins' 1
+  space
+  space
+  spec ' ' 'Buzzer2' 'Buzzer Pin _ State _' 'menu.digital_pins bool' 1 false
+  spec ' ' 'LED' 'LED Pin _ State _' 'menu.digital_pins bool' 1 false
+  spec ' ' 'Relay Pin' 'Relay Pin _ State _' 'menu.digital_pins bool' 1 false
+  space
+  spec ' ' 'Buzzer' 'Buzzer Pin _ Tone _' 'menu.digital_pins num' 1 1000
+  spec ' ' 'LED2 Pin' 'LED Pin _ Brightness _' 'menu.digital_pins num' 1 1000
+
+to DigitalPins Pin {
+  return (at Pin ('[data:makeList]' 13 2 26 27 0 23 16 5 18))
+}
+
+to 'Button Pin' Pin {
+  local 'Read1' (digitalReadOp (DigitalPins Pin) 'up')
+  if (Read1 == (booleanConstant true)) {
+    return (not Read1)
+  } else {
+    return (booleanConstant true)
+  }
+}
+
+to Buzzer Pin Tone {
+  analogWriteOp (DigitalPins Pin) Tone
+}
+
+to Buzzer2 Pin State {
+  digitalWriteOp (DigitalPins Pin) State
+}
+
+to 'Humidity Pin' Pin {
+  return (humidity_DHT11 (DigitalPins Pin))
+}
+
+to LED Pin State {
+  digitalWriteOp (DigitalPins Pin) State
+}
+
+to 'LED2 Pin' Pin Brightness {
+  analogWriteOp (DigitalPins Pin) Brightness
+}
+
+to 'Photo Interrupter Pin' Pin {
+  return (digitalReadOp (DigitalPins Pin))
+}
+
+to 'Relay Pin' Pin State {
+  digitalWriteOp (DigitalPins Pin) State
+}
+
+to 'Temperature Pin' Pin {
+  return (temperature_DHT11 (DigitalPins Pin))
+}
+
+to 'Tilt Switch Pin' Pin {
+  return (digitalReadOp (DigitalPins Pin))
+}
+
+to 'Touch Pin' Pin {
+  return (digitalReadOp (DigitalPins Pin))
+}
+
+to 'Hall Magnetic Pin' Pin {
+  local 'Read1' (digitalReadOp (DigitalPins Pin) 'up')
+  if (Read1 == (booleanConstant true)) {
+    return (not Read1)
+  } else {
+    return (booleanConstant true)
+  }
+}

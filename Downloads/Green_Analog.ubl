@@ -1,0 +1,32 @@
+module Spark_Analog 'cat;Operators'
+author 'FABLAB BH'
+version 1 1 
+description ''
+
+  choices analog_pins '3' '4' '6' '7' '8'
+  spec 'r' '_Analog Pins' '_Analog Pins _' 'num' 3
+  spec 'r' 'Film Pressure Pin' 'Film Pressure Pin _' 'menu.analog_pins' 3
+  spec 'r' 'PhotoResistance Pin' 'Photoresistance Pin _' 'menu.analog_pins' 3
+  spec 'r' 'Potentiometer' 'Potentiometer Pin _' 'menu.analog_pins' 3
+  spec 'r' 'Steam Sensor' 'Steam Sensor _' 'menu.analog_pins' 3
+
+to 'Analog Pins' Pin {
+  return (at Pin ('[data:makeList]' 0 0 4 39 0 36 35 34 0))
+}
+
+to 'Film Pressure Pin' Pin {
+  return (analogReadOp ('Analog Pins' Pin))
+}
+
+to 'PhotoResistance Pin' Pin {
+  return (analogReadOp ('Analog Pins' Pin))
+}
+
+to Potentiometer Pin {
+  return (analogReadOp ('Analog Pins' Pin))
+}
+
+to 'Steam Sensor' Pin {
+  return (analogReadOp ('Analog Pins' Pin))
+}
+

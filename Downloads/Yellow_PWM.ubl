@@ -1,0 +1,102 @@
+module Spark_PWM 'cat;Control'
+author 'FABLAB BH'
+version 1 1 
+depends _Servo 
+choices PWM_pins '1' '9' 
+choices PWM_pins2 '3' '4' '6' '7' '8'
+choices direction clockwise 'counter-clockwise' 
+choices servo_pins '32' '33' 
+description ''
+
+  spec 'r' '_PWM Pin' '_PWM Pin _' 'menu.PWM_pins' 1
+  spec 'r' '_Direction' '_Direction _' 'menu.direction' 'clockwise'
+
+  spec ' ' 'Fan Motor3' 'Fan Motor Pin _ Speed _ (0-100)' 'menu.PWM_pins2 num' 3 50
+  spec ' ' 'Fan Motor4' 'Fan Motor Pin _ Speed _ (0-1023)' 'menu.PWM_pins2 num' 3 50
+  space
+  spec ' ' 'Fan Motor' 'Fan Motor Pin _ Direction _ Speed _ (0-100)' 'menu.PWM_pins menu.direction num' 1 'clockwise' 50
+  spec ' ' 'Fan Motor2' 'Fan Motor Pin _ Direction _ Speed _ (0-1023)' 'menu.PWM_pins menu.direction num' 1 'clockwise' 50
+  space
+  spec ' ' 'Servo' 'Servo Motor Pin _ Speed _ (-100 to 100)' 'menu.servo_pins num' 33 50
+  spec ' ' 'Servo Motor Pin' 'Servo Motor Pin _ Degrees _ (-90 to 90)' 'menu.servo_pins num' 33 90
+
+to Direction Direction {
+  if (Direction == ('[data:toString]' 'counter-clockwise')) {
+    return (booleanConstant false)
+  } else {
+    return (booleanConstant true)
+  }
+}
+
+to 'Fan Motor' Pin Direction Speed {
+  if (and (Speed > 0) (Speed <= 100)) {
+    local 'PWM' (absoluteValue (((Speed - 1) * ((1023 - 1) / 99)) + 1))
+    if ((Direction Direction) == (not true)) {
+      if (and (PWM > 0) (PWM < 1024)) {
+        digitalWriteOp ('PWM Pin' Pin) true
+        analogWriteOp (('PWM Pin' Pin) + 1) (1023 - PWM)
+      }
+    } else {
+      if (and (PWM > 0) (PWM < 1024)) {
+        digitalWriteOp ('PWM Pin' Pin) false
+        analogWriteOp (('PWM Pin' Pin) + 1) PWM
+      }
+    }
+  } (Speed == 0) {
+    digitalWriteOp ('PWM Pin' Pin) false
+    digitalWriteOp (('PWM Pin' Pin) + 1) false
+  } else {
+    sayIt 'The range is between 0 and 100'
+  }
+}
+
+to 'Fan Motor2' Pin Direction Speed {
+  if (and (Speed > 0) (Speed <= 1023)) {
+    if ((Direction Direction) == (not true)) {
+        digitalWriteOp ('PWM Pin' Pin) true
+        analogWriteOp (('PWM Pin' Pin) + 1) (1023 - Speed)
+    } else {
+        digitalWriteOp ('PWM Pin' Pin) false
+        analogWriteOp (('PWM Pin' Pin) + 1) Speed
+    }
+  } (Speed == 0) {
+    digitalWriteOp ('PWM Pin' Pin) false
+    digitalWriteOp (('PWM Pin' Pin) + 1) false
+  } else {
+    sayIt 'The range is between 0 and 1023'
+  }
+}
+
+to 'Fan Motor3' Pin Speed {
+  if (and (Speed > 0) (Speed <= 100)) {
+    local 'PWM' (absoluteValue (((Speed - 1) * ((1023 - 1) / 99)) + 1))
+    analogWriteOp ('PWM Pin' Pin) PWM
+  } (Speed == 0) {
+    digitalWriteOp ('PWM Pin' Pin) false
+  } else {
+    sayIt 'The range is between 0 and 100'
+  }
+}
+
+to 'Fan Motor4' Pin Speed {
+  if (and (Speed > 0) (Speed <= 1023)) {
+    analogWriteOp ('PWM Pin' Pin) Speed
+  } (Speed == 0) {
+    digitalWriteOp ('PWM Pin' Pin) false
+  } else {
+    sayIt 'The range is between 0 and 1023'
+  }
+}
+
+to 'PWM Pin' Pin {
+  return (at Pin ('[data:makeList]' 13 0 26 27 0 23 16 5 18))
+}
+
+to Servo Pin Speed {
+  setServoSpeed Pin Speed
+}
+
+to 'Servo Motor Pin' Pin Degrees {
+  setServoAngle Pin Degrees
+}
+
