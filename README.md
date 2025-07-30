@@ -41,18 +41,22 @@ It's like giving every port a name—so we can talk to them and work together as
 
 ### 🛠️ Issue 1: Incorrect Pin Mapping
 The pins shown in MicroBlocks didn’t match the actual pins on the microcontroller.
+
 ✅ Solution: We created a drop-down menu that shows the correct pin numbers as labeled on the microcontroller.
 
 ### 🛠️ Issue 2: Inverted Module Behavior
 Some modules behaved in reverse—turning ON in code would turn them OFF in real life (and vice versa).
+
 ✅ Solution: We created custom blocks that automatically handle inverted logic for those modules.
 
 ### 🛠️ Issue 3: Modules Needing Multiple Pins
 Some modules, like RGB LEDs, required controlling multiple pins at once, which made coding harder and repetitive.
+
 ✅ Solution: We created dedicated blocks for these modules that manage all required pins together, making it easier to control them with a single command.
 
 ### 🛠️ Issue 4: Complex Modules with Many Features
 Some modules had more than one function (like color + brightness), making it tricky to support all features in one block.
+
 ✅ Solution: We made more than one block per module when needed, each one focusing on a specific feature (e.g. one for color, one for brightness).
 
 ---
