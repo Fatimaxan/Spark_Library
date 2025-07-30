@@ -7,3 +7,17 @@
 
 ## Issues and Solusions
 
+
+## These Modules Got Blocks!
+
+| Digital                | Analog             | I2C                              | PWM                     | Multi-pin Modules               |
+|------------------------|--------------------|----------------------------------|--------------------------|----------------------------------|
+| LED                    | Film Pressure      | OLED Display (Copied)            | Fan Motor               | Ultrasonic (Dependencies)        |
+| Buzzer                 | Photoresistor      | Motor Driver                     | Servo (Dependencies)    | RGB LED                          |
+| Horn                   | Potentiometer      | Gesture Sensor (Dependencies)    | —                        | Traffic Light                    |
+| Touch Sensor           | Steam Sensor       | —                                | —                        | —                                |
+| Button Input           | —                  | —                                | —                        | —                                |
+| Photo Interrupter      | —                  | —                                | —                        | —                                |
+| Tilt Switch            | —                  | —                                | —                        | —                                |
+| Temp & Humidity (Dependencies) | —          | —                                | —                        | —                                |
+| Relay                  | —                  | —                                | —             
