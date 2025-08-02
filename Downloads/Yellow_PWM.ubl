@@ -10,11 +10,11 @@ description ''
   spec 'r' '_PWM Pin' '_PWM Pin _' 'menu.PWM_pins' 1
   spec 'r' '_Direction' '_Direction _' 'menu.direction' 'clockwise'
 
-  spec ' ' 'Fan Motor3' 'Fan Motor Pin _ Speed _ (0-100)' 'menu.PWM_pins2 num' 3 50
-  spec ' ' 'Fan Motor4' 'Fan Motor Pin _ Speed _ (0-1023)' 'menu.PWM_pins2 num' 3 50
+  spec ' ' 'Fan Motor3' 'Fan Motor Pin _ Speed _ (1-100)' 'menu.PWM_pins2 num' 3 50
+  spec ' ' 'Fan Motor4' 'Fan Motor Pin _ Speed _ (1-1023)' 'menu.PWM_pins2 num' 3 50
   space
-  spec ' ' 'Fan Motor' 'Fan Motor Pin _ Direction _ Speed _ (0-100)' 'menu.PWM_pins menu.direction num' 1 'clockwise' 50
-  spec ' ' 'Fan Motor2' 'Fan Motor Pin _ Direction _ Speed _ (0-1023)' 'menu.PWM_pins menu.direction num' 1 'clockwise' 50
+  spec ' ' 'Fan Motor' 'Fan Motor Pin _ Direction _ Speed _ (1-100)' 'menu.PWM_pins menu.direction num' 1 'clockwise' 50
+  spec ' ' 'Fan Motor2' 'Fan Motor Pin _ Direction _ Speed _ (1-1023)' 'menu.PWM_pins menu.direction num' 1 'clockwise' 50
   
 
 to Direction Direction {
