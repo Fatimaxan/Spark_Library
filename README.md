@@ -66,7 +66,7 @@ Some modules had more than one function (like color + brightness), making it tri
 |------------------------|--------------------|----------------------------------|--------------------------|----------------------------------|
 | LED                    | Film Pressure      | OLED Display (Copied)            | Fan Motor               | Ultrasonic (Dependencies)        |
 | Buzzer                 | Photoresistor      | Motor Driver                     | Servo (Dependencies)    | RGB LED                          |
-| Horn                   | Potentiometer      | Gesture Sensor (Dependencies)    | —                        | Traffic Light                    |
+| Horn                   | Potentiometer      | —    | —                        | Traffic Light                    |
 | Touch Sensor           | Steam Sensor       | —                                | —                        | —                                |
 | Button Input           | —                  | —                                | —                        | —                                |
 | Photo Interrupter      | —                  | —                                | —                        | —                                |

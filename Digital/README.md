@@ -31,7 +31,7 @@ Digital sensors detect clear changes (like pressing a button), while digital out
 
 ![](../Images/25.png)
 
-This sensor reads the input from the physical world.
+This sensor detects when it is touched. It sends an ON signal when touched and OFF when released.
 
 ---
 
@@ -43,19 +43,19 @@ This sensor reads the input from the physical world.
 
 ![](../Images/21.png)
 
-This sensor reads the input from the physical world.
+This sensor detects when the button is pressed. It sends an ON signal while the button is held down.
 
 ---
 
 ### Module 03: Photo Interrupter
 
-![Image](../Images/.png)
+![](../Images/34.png)
 
 #### Block:
 
 ![](../Images/23.png)
 
-This sensor reads the input from the physical world.
+This sensor detects if something passes between its light beam. It is commonly used to count or detect movement.
 
 ---
 
@@ -67,7 +67,7 @@ This sensor reads the input from the physical world.
 
 ![](../Images/24.png)
 
-This sensor reads the input from the physical world.
+This sensor detects tilt or angle changes. It sends an ON signal when tilted beyond a certain point.
 
 ---
 
@@ -79,9 +79,13 @@ This sensor reads the input from the physical world.
 
 ![](../Images/26.png)
 
+This block reads the **temperature** from the environment.
+
 #### Block 2:
 
-![](../Images/26.png)
+![](../Images/27.png)
+
+This block reads the **humidity** (moisture in the air).
 
 ---
 
@@ -93,9 +97,13 @@ This sensor reads the input from the physical world.
 
 ![](../Images/29.png)
 
+This block turns the LED ON or OFF using a **true/false** value.
+
 #### Block 2:
 
 ![](../Images/32.png)
+
+This block adjusts the LED brightness by entering a value between **0 and 1023**.
 
 ---
 
@@ -107,19 +115,24 @@ This sensor reads the input from the physical world.
 
 ![](../Images/28.png)
 
+This block turns the buzzer ON or OFF using a **true/false** value.
+
 #### Block 2:
 
 ![](../Images/31.png)
+
+This block changes the buzzer’s sound level using a value between **0 and 1023**.
 
 ---
 
 ### Module 08: Relay
 
-![Image](../Images/.png)
-
+![](../Images/33.png)
 
 #### Block:
 
 ![](../Images/30.png)
+
+This block controls the relay like a switch—**ON or OFF**—allowing you to turn other devices on or off through the relay.
 
 ---

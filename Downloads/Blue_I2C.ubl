@@ -1,13 +1,10 @@
 module Spark_I2C 'cat;Output'
 author FABLAB
 version 1 1 
-depends '_Gesture (PAJ7620)' 
 choices direction clockwise 'counter-clockwise' 
 description ''
 variables Gesture 
 
-  spec 'r' 'Gesture Read' 'Gesture Read'
-  space
   spec ' ' 'Motor Driver A' 'Motor Driver A Direction _ Speed _' 'menu.direction num' 'clockwise' 10
   spec ' ' 'Motor Driver B' 'Motor Driver B Direction _ Speed _' 'menu.direction num' 'clockwise' 10
   spec 'r' '_Direction' '_Motor Direction _' 'menu.direction' '10'
@@ -18,10 +15,6 @@ to Direction Direction {
   } else {
     return (booleanConstant true)
   }
-}
-
-to 'Gesture Read' {
-  return ('paj7620 read')
 }
 
 to 'Motor Driver A' Direction Speed {

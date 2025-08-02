@@ -1,7 +1,6 @@
 module Spark_PWM 'cat;Control'
 author 'FABLAB BH'
 version 1 1 
-depends _Servo 
 choices PWM_pins '1' '9' 
 choices PWM_pins2 '3' '4' '6' '7' '8'
 choices direction clockwise 'counter-clockwise' 
@@ -16,9 +15,7 @@ description ''
   space
   spec ' ' 'Fan Motor' 'Fan Motor Pin _ Direction _ Speed _ (0-100)' 'menu.PWM_pins menu.direction num' 1 'clockwise' 50
   spec ' ' 'Fan Motor2' 'Fan Motor Pin _ Direction _ Speed _ (0-1023)' 'menu.PWM_pins menu.direction num' 1 'clockwise' 50
-  space
-  spec ' ' 'Servo' 'Servo Motor Pin _ Speed _ (-100 to 100)' 'menu.servo_pins num' 33 50
-  spec ' ' 'Servo Motor Pin' 'Servo Motor Pin _ Degrees _ (-90 to 90)' 'menu.servo_pins num' 33 90
+  
 
 to Direction Direction {
   if (Direction == ('[data:toString]' 'counter-clockwise')) {
@@ -91,12 +88,3 @@ to 'Fan Motor4' Pin Speed {
 to 'PWM Pin' Pin {
   return (at Pin ('[data:makeList]' 13 0 26 27 0 23 16 5 18))
 }
-
-to Servo Pin Speed {
-  setServoSpeed Pin Speed
-}
-
-to 'Servo Motor Pin' Pin Degrees {
-  setServoAngle Pin Degrees
-}
-
