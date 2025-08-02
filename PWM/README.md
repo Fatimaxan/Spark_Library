@@ -1,66 +1,44 @@
-# 🟧 Multi-Digital Pins
+# 🟨 PWM
 
-### What are Multi-Digital Pins?
+### What is PWM?
 
-Some modules use **more than one digital pin** to work properly. These pins allow the module to send or receive multiple signals at the same time—for example, controlling multiple LEDs, handling different colors, or measuring distance with precise timing.
+PWM (Pulse Width Modulation) is a technique used to **control power** to devices by turning the signal on and off very quickly.  
+By adjusting how long the signal stays on during each cycle, we can control things like **brightness**, **speed**, or **intensity**.
 
 ---
 
 ### Included Modules:
 
-#### 🔌 Inputs:
-- [Ultrasonic Sensor](#module-01-ultrasonic-sensor)
-
-#### 💡 Outputs:
-- [RGB LED](#module-02-rgb-led)
-- [Traffic Light](#module-03-traffic-light)
+- [Fan Motor](#module-01-fan-motor)
 
 ---
 
-### Module 01: Ultrasonic Sensor
+### Module 01: Fan Motor
 
-![](../Images/42.png)
-
-#### Block:
-
-![](../Images/45.png)
-
-This sensor reads **distance** from the physical world using ultrasonic sound waves. It uses **two pins**: one to trigger the signal and one to receive the echo.
-
----
-
-### Module 02: RGB LED
-
-![](../Images/43.png)
+![](../Images/37.png)
 
 #### Block 1:
 
-![](../Images/46.png)
+![](../Images/38.png)
 
-This block controls the **red**, **green**, and **blue** channels using **ON/OFF** values.
-
-#### Block 2:
-
-![](../Images/48.png)
-
-This block controls the brightness of **red**, **green**, and **blue** individually, using values from **0 to 255** to mix custom colors.
-
----
-
-### Module 03: Traffic Light
-
-![](../Images/44.png)
-
-#### Block 1:
-
-![](../Images/47.png)
-
-This block turns the **red**, **yellow**, and **green** lights **ON or OFF**.
+This block controls the fan speed in a range from **1 to 100**.
 
 #### Block 2:
 
-![](../Images/49.png)
+![](../Images/39.png)
 
-This block allows you to adjust the **brightness** of the red, yellow, and green lights using values from **0 to 255**.
+This block controls the fan speed in a range from **1 to 1023**.
+
+#### Block 3:
+
+![](../Images/40.png)
+
+This block controls the fan speed in a range from **1 to 100**, with **direction control**.
+
+#### Block 4:
+
+![](../Images/41.png)
+
+This block controls the fan speed in a range from **1 to 1023**, with **direction control**.
 
 ---

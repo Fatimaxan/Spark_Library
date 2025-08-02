@@ -99,7 +99,7 @@ This block reads the **humidity** (moisture in the air).
 
 This block turns the LED ON or OFF using a **true/false** value.
 
-#### Block 2:
+#### Block 2: (PWM)
 
 ![](../Images/32.png)
 
@@ -117,7 +117,7 @@ This block adjusts the LED brightness by entering a value between **0 and 1023**
 
 This block turns the buzzer ON or OFF using a **true/false** value.
 
-#### Block 2:
+#### Block 2: (PWM)
 
 ![](../Images/31.png)
 

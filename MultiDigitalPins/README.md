@@ -39,7 +39,7 @@ This sensor reads input from the physical world.
 
 This block allows to control red, green and blue color as on and off.
 
-#### Block 2:
+#### Block 2: (PWM)
 
 ![](../Images/48.png)
 
@@ -57,7 +57,7 @@ This block allows to control red, green and blue color in a range 0-255.
 
 This block allows to control red, yellow and green color as on and off.
 
-#### Block 2:
+#### Block 2: (PWM)
 
 ![](../Images/49.png)
 
